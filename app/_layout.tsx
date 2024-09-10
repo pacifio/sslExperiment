@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/components/useColorScheme';
+import { isReactNative, setPuthikaApiClientToken } from 'puthika-universal-api';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -26,6 +27,10 @@ export default function RootLayout() {
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
     ...FontAwesome.font,
   });
+
+  useEffect(() => {
+    setPuthikaApiClientToken("11e7b1e5fa0c6ee9987bd29b2eea63c4");
+  }, []);
 
   // Expo Router uses Error Boundaries to catch errors in the navigation tree.
   useEffect(() => {
@@ -53,6 +58,8 @@ function RootLayoutNav() {
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
+        <Stack.Screen name="ssl_pay" options={{ presentation: 'modal', title: "SSLCommerz" }} />
+        <Stack.Screen name="ssl_browser" options={{ presentation: 'modal', title: "Pay now" }} />
       </Stack>
     </ThemeProvider>
   );
